@@ -38,10 +38,6 @@ function AuthProvider({ children }: AuthProviderData) {
 
   const { CLIENT_ID } = process.env;
 
-  useEffect(() => {
-    api.defaults.headers['Client-Id'] = CLIENT_ID;
-  }, [])
-
   async function signIn() {
     try {
       setIsLoggingIn(true);
@@ -97,7 +93,7 @@ function AuthProvider({ children }: AuthProviderData) {
   }
 
   useEffect(() => {
-    // add client_id to request's "Client-Id" header
+    api.defaults.headers['Client-Id'] = CLIENT_ID;
   }, [])
 
   return (
